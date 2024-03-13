@@ -1,0 +1,53 @@
+/* Home.module.css */
+
+.divContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.inputGroup input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.inputpass {
+  width: 31rem;
+}
+
+.inputGroup button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.controls label {
+  margin-right: 10px;
+}
+
+.controls input[type="range"] {
+  width: 150px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.controls input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
