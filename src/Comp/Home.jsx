@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { toast } from "react-toastify";
+import Button from "react-bootstrap/Button";
 
 const Home = () => {
   const [length, setLength] = useState(16);
   const [numberAllowed, setNumberallowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const [disable, setDisable] = useState(true);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -23,13 +25,15 @@ const Home = () => {
 
   useEffect(() => {
     passwordGenerator();
+    setDisable(true);
   }, [length, numberAllowed, charAllowed, passwordGenerator]);
 
   const handleClick = () => {
     navigator.clipboard.writeText(password);
-    toast.info(" Copied!!! ",{
-        position:"top-center",
+    toast.info(" Copied!!! ", {
+      position: "top-center",
     });
+    setDisable(false);
   };
 
   return (
@@ -38,10 +42,19 @@ const Home = () => {
         <input
           type="text"
           value={password}
+          placeholder="Password"
           readOnly
           className={styles.inputpass}
         />
-        <button onClick={handleClick}>Copy</button>
+        {disable ? (
+          <Button variant="primary" onClick={handleClick}>
+            Copy
+          </Button>
+        ) : (
+          <Button variant="secondary" disabled>
+            Change Password
+          </Button>
+        )}
       </div>
       <div className={styles.controls}>
         <label>Length: ({length})</label>
